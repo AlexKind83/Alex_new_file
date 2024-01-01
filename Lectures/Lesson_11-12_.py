@@ -352,7 +352,7 @@
 # }
 # for i in goods:
 #     print(i, ') ', goods[i][0], ' - ', goods[i][1], ' шт. по ', goods[i][2], 'руб', sep='')
-#
+
 # while True:
 #     n = input('№: ') # '2'
 #     if n != '0':

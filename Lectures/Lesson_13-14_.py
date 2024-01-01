@@ -214,17 +214,231 @@
 #     print(k, '->', v)
 
 
-# Атрибут enumerate() --
+# # Атрибут enumerate() --
+# #
+# data = ['red', 'green', 'blue']
+# num = 1
 #
-data = ['red', 'green', 'blue']
-num = 1
-
-for val in data:
-    print(num, ') ', val, sep='')
-    num += 1
-
-print()
-for num, val in enumerate(data, start=1):
-    print(num, ') ', val, sep='')
+# for val in data:
+#     print(num, ') ', val, sep='')
+#     num += 1
+#
+# print()
+# for num, val in enumerate(data, start=1):
+#     print(num, ') ', val, sep='')
 
 
+
+
+
+
+# Урок 14
+#
+
+
+# # Распаковка вложенного списка с помощью *
+# #
+# a = [1, 2, 3]
+# b = [*a, 4, 5, 6]
+# print(b)
+
+
+# # Используем в функций (*args)
+# #
+# def func(*args):
+#     return args
+#
+#
+# print(func(2))
+# print(func(2, 3, 4, 'abc'))
+# print(func())
+
+
+# # Подсчет суммы используя *
+# #
+# def summa(*params):
+#     res = 0
+#     for i in params:
+#         res += i
+#     return res
+#
+#
+# print((summa(1, 2, 3, 4, 5, 6, 7, 8, 9)))
+# print(summa(3, 4, 5))
+
+
+# # Задача РАСМОТРЕТЬ
+# #
+# def to_dict(*args):
+#     return {element: element for element in args}
+#
+#
+# print(to_dict(1, 2, 3, 4))
+# print(to_dict('grey', (2, 17), 3.11, -4))
+
+
+# # Задача
+# #
+# def func(*args):
+#     midle = sum(args) / len(args)
+#     print(midle)
+#     res = []
+#     for element in args:
+#         if element < midle:
+#             res.append(element)
+#     return res
+#
+#
+# first = func(1, 2, 3, 4, 5, 6, 7, 8, 9)
+# print(first)
+# second = func(3, 6, 1, 9, 5)
+# print(second)
+
+
+# #
+# #
+# def func(a, *args):
+#     return a, args
+#
+#
+# print(func(1))
+# print(func(1, 2, 3, 4, 5, 6, 7))
+
+
+# #
+# #
+# def print_score(student, *scores):
+#     print('Student Name:', student)
+#     for score in scores:
+#         print(score)
+#
+#
+# print_score('Irina', 5, 4, 3, 3, 5)
+# print_score('Igor', 5, 4, 5, 2, 5)
+# print_score('Lev')
+
+
+# # Свойства ** передает dict(словарь)
+# #
+# def func(**kwargs):
+#     return kwargs
+#
+#
+# print(func(a=1, b=2, c=3))
+# print(func())
+# print(func(b=9))
+
+
+# #
+# #
+# def intro(**data):
+#     for k, v in data.items():
+#         print(k, '->', v)
+#     print()
+#
+#
+# intro(name='Irina', surname='Reznikova', aga=22)
+# intro(name='Igor', surname='Berukov', email='igor@mail.ru', aga=25, phone='+7909999-46-89')
+
+
+# # Задача РАСМОТРЕТЬ
+# #
+# def db(**kwargs):
+#     my_dict.update(kwargs)
+#     # print("внутри функций:", id(my_dict))
+#
+#
+# my_dict = {'one': 'first'}
+# # print(id(my_dict))
+# db(k1=22, k2=31, k3=11, k4=91)
+# db(name='Bob', aga=31, wight=61, eyes_color='grey')
+# print(my_dict)
+
+
+# # Последовательность (*, **, именованные и позиционный аргумент)
+# # Именованные аргументы в ВЫЗОВЕ можно ставить где угодно, НО не в * и позиционных
+# #
+# def func(a, b, c, *args, d, e, **kwargs):
+#     return a, b, c, args, e, kwargs, d
+#
+#
+# print(func(5, 9, 7, 8, 4, 3, 2, 1, k1=22, k2=31, e=100, k3=11, k4=91, d=55))
+
+
+# # Области видимости
+# #
+# name = 'Tom'
+# # print("глобальная область видимости: ", id(name))
+#
+#
+# def hi():
+#     global name
+#     name = 'Sam'
+#     # print("локальная область видимости: ", id(name))
+#     surname = "Johnson"
+#     print('Hello', name, surname)
+#
+#
+# def bye():
+#     print(("Goog bye", name))
+#
+#
+# print(name)
+# hi()
+# bye()
+# print(name)
+# # print("глобальная область видимости: ", id(name))
+
+
+# #
+# #
+# i = 5
+#
+#
+# def func(arg=i):
+#     print(arg)
+#
+#
+# i = 6
+# func()
+
+
+# # Вложенные функций
+# # РАЗАБРАТСЯ области видимости
+# #
+#
+#
+# # x = 4
+#
+#
+# def add_five(a):
+#     x = 2
+#
+#     def add_some():
+#         # x = 1
+#         print('x =', x)
+#         return a + x
+#
+#     return add_some()
+#
+#
+# print(add_five(5))
+
+
+#
+# # Когда зарезервированные Функций перестают работать
+# #
+# sum = 5
+#
+# lst = [9, 5, 8, 7, 6]
+# print(sum(lst)) # 5([9, 5, 8, 7, 6])
+
+
+# # Вывод зарезервированных Функций
+# #
+# import builtins
+#
+# name = dir(builtins)
+#
+# for t in name:
+#     print(t)
