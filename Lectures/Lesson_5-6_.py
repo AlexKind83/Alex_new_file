@@ -15,8 +15,8 @@
 #         print("----- j =", j)
 
 
-# # Длина и высота символов
-#
+# Длина и высота символов
+
 # w = 16
 # h = 4
 # for i in range(h):
@@ -94,8 +94,8 @@
 # # [выражение for переменная in последовательность] -- генератор for
 # #
 # #
-# a = [0 for _ in range(5)] # a = [0 for i in range(5)]
-# print(a)
+a = [0 for _ in range(5)] # a = [0 for i in range(5)]
+print(a)
 # b = [i for i in range(5)]
 # print(b)
 

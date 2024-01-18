@@ -54,10 +54,10 @@
 
 # print("строка \
 # символов")
-# print('строка \n символов')
+# print('строка \nсимволов')
 # print('строка \n'
 #       'символов')
-# print('\t строка \n    символов D:\\folder\\file.txt')
+# print('\tстрока \n    символов D:\\folder\\file.txt')
 
 
 # s1 = "Hello"
@@ -145,7 +145,7 @@
 # print("Я учу Python.")
 # print("Меня зовут", name + ". Мне", age, "лет.", sep=" ", end="\n\n")
 # print("Я учу Python.")
-# print("Меня зовут", name + ". Мне", age, "лет.", sep=" ", end="--//--")
+# print("Меня зовут", name + ". Мне", age, "лет.", sep=" ", end="\t")
 # print("Я учу Python.")
 
 
