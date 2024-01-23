@@ -47,13 +47,13 @@
 
 # # Задача
 # #
-_s = input("Введите два слова через пробел: ")  # один два
-first = _s[:_s.find(' ')]
-second = _s[_s.find(' ') + 1:]
-print(first)
-print(second)
-
-print(second + ' ' + first)
+# _s = input("Введите два слова через пробел: ")  # один два
+# first = _s[:_s.find(' ')]
+# second = _s[_s.find(' ') + 1:]
+# print(first)
+# print(second)
+#
+# print(second + ' ' + first)
 
 
 # #
@@ -177,3 +177,138 @@ print(second + ' ' + first)
 #
 # print(ord('ё'))
 
+
+
+
+
+
+
+# Урок 19
+
+import re
+
+# #
+# #
+# s = "Я ищу совпадения в 2024 году. И я их найду в 2 счёта. 198765 Hel_lo[-World]"
+# reg = r'\w+'
+# # reg = r'20*'  # 1 элемент обязателен (2 едет только после 1 элемента)
+#
+#
+# print(re.findall(reg, s))
+
+
+# Задача
+#
+# st = "Час в 24-часовом формате от 00 до 23. 2021-06-15Е21:59. Минуты, в диапазоне от 00 до 59. 2021-06-15T01:09."
+# req = r'[0-2][0-9]:[0-5][0-9]'
+# print(re.findall(req, st))
+
+
+#
+#
+# d = "Цифры: 7б +17, -42, 0013, 0.3"
+# print(re.findall(r'[+-]?\d+[.\d]*', d))
+
+
+# # Поиск и замена регулярного выражения РАСМОТРЕТЬ ОБЯЗАТЕЛЬНО
+# #
+# st = "05-03-1987 # Дата рождения"
+# # print("Дата рождения:", re.sub(r'\s#.*', '', st).replace('-', '.'))
+# print("Дата рождения:", re.sub('-', '.', re.sub(r'#.*', '', st)))
+# print('Дата рождения:', re.sub(r'-', '.', re.search(r'\d{2}-\d{2}-\d{4}', st).group()))
+
+
+# # Задача
+# #
+# st = 'author=Пушкин А. С.; title = Евгений Онегин; price =200; year= 1831'
+# # reg = r'\w+\s*=\s*\w+'  # плохой подход
+# reg = r'[^;]+'
+# print(re.findall(reg, st))
+
+
+# #
+# #
+# st = "12 сентября 2021 года 2356858475609"
+# reg1 = r'\d{2,4}'
+# reg2 = r'\d{2,}'
+# reg3 = r'\d{,4}'
+#
+# print(re.findall(reg1, st))
+# print(re.findall(reg2, st))
+# print(re.findall(reg3, st))
+
+
+# # Задача
+# #
+# st = '+7 499 456-45-78, +74994564578, +7 (499) 456 45 78, 74994564578'
+# reg = r'\+?7\d{10}'
+# print(re.findall(reg, st))
+
+
+# #
+# #
+# s = "Я ищу совпадения в 2024 году. И я их найду в 2 счёта. 198765 Hel_lo[-World] 2875438 6968345"
+# # reg = r'\w+\s\w+'
+# # reg = r'^\w+\s\w+'
+# # reg = r'\w+\s\w+$'
+#
+# print(re.findall(reg, s))  # findall (файнтбол)
+
+
+# # Функция с шаблоном регулярного выражения
+# #
+# def valid_login(name):
+#     return re.findall(r'^[A-Za-z0-9_-]{6,16}$', name)  # 6-16, англ. буквы, _, -, [0-9]
+#
+#
+# print(valid_login("Python_master"))
+# print(valid_login("!!!!Python"))
+# print(valid_login("Python!!!!"))
+# print(valid_login("Python!!!Python"))
+
+
+# # Флаги шаблона регулярного выражения
+# # РАСМОТРЕТЬ ВНИМАТЕЛЬНО
+# #
+# print(re.findall(r'\w+', '12 + й'))
+# print(re.findall(r'\w+', '12 + й', flags=re.ASCII))
+# print(re.findall(r'\w+', '12 + й', flags=re.A))
+# print(re.findall(r'\w+', '12 + й', re.A))
+
+
+# text = "hello world"
+# # print(re.findall(r'\w+', text))
+# print(re.findall(r'\w+', text, re.DEBUG))
+# print(re.findall(r'\w\+', text, re.DEBUG))
+
+
+# s = "Я ищу совпадения в 2024 году. И я их найду в 2 счёта."
+# reg = r'я'
+# print(re.findall(reg, s, re.IGNORECASE))
+
+
+# text = """
+# one
+# two
+# """
+# # print(re.findall(r'one.\w+', text))  # one\ntwo
+# # print(re.findall(r'one.\w+', text, re.DOTALL))  # one\ntwo
+#
+# print(re.findall(r'one$', text))
+# print(re.findall(r'one$', text, re.MULTILINE))
+
+
+# print(re.findall(r"""
+# [a-z.-]+    # part 1
+# @           # @
+# [a-z.-]+    # part 2
+# """, 'test@mail.ru', re.VERBOSE))  # Если нужен комментарий, пробел, или перенос на другую строку
+
+
+# # Используем многого флагов в многострочном тексте
+# #
+# text = """Python
+# python
+# PYTHON"""
+# reg = r'(?im)^python'
+# print(re.findall(reg, text))
