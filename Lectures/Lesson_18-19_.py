@@ -85,11 +85,11 @@
 # print('!456A'.isupper())  #
 #
 # print('py'.center(10, '-'))  # Выравнивает строку по центру (метод для форматирования)
-# print('py'.center(11, '-'))
+# print('py'.center(11, '+'))
 #
 # print('       py'.lstrip())
 # print('py       '.rstrip())
-# print('     py      '.strip())
+# print('    py    '.strip())
 #
 # print("https://www.python.org".lstrip())
 # print("https://www.python.org".lstrip('/:pths'))
@@ -109,7 +109,7 @@
 # s = "hello, WORLD! I am learning Python."
 # print(s.split())
 # print('www.python.org'.split('.'))
-# print('www.python.org'.split('.', 2))  # делит строку на список, состоящий из строк
+# print('www.python.org'.split('.', 1))  # делит строку на список, состоящий из строк
 # print('www.python.org'.rsplit('.', 2))
 
 
@@ -136,11 +136,11 @@
 # Регулярные выражения
 #
 #
-# import re
+import re
 #
 # s = "Я ищу совпадения в 2024 году. И я их найду в 2 счёта."
-# reg = 'совпадения'
-# print(re.findall(reg, s))  # возвращает список, содержащий все совпадения с, шаблонам
+# reg = r'\w+'
+# print(re.finditer(reg, s))  # возвращает список, содержащий все совпадения с, шаблонам
 #
 # print(re.search(reg, s))  # возвращает месторасположение первого совпадение с, шаблонам
 # print(re.search(reg, s).span())  # (6, 16)
@@ -148,12 +148,15 @@
 # print(re.search(reg, s).end())  # 16
 #
 # s = "Я ищу совпадения в 2024 году. И я их найду в 2 счёта."
-# reg = 'ищу'
-# print(re.match(reg, s))  # возвращает месторасположение ВНИМАНИЕ дописать
+# reg = 'Я ищу'
+# print(re.match(reg, s))  # возвращает месторасположение
+# print(re.match(reg, s).start())
+# print(re.match(reg, s).end())
 #
 # s = "Я ищу совпадения в 2024 году. И я их найду в 2 счёта."
 # reg = '[.я2]'
 # print(re.split(reg, s))  # Возвращает список, в котором строка разбита по шаблону
+# print(re.split(reg, s, 1))
 #
 # s = "Я ищу совпадения в 2024 году. И я их найду в 2 счёта."
 # reg = r'\.'  # r спец символ (сырая строка) [нужен чтобы не надо было экранировать (\.)]
@@ -182,10 +185,9 @@
 
 
 
-
 # Урок 19
 
-import re
+# import re
 
 # #
 # #
@@ -213,8 +215,8 @@ import re
 # # Поиск и замена регулярного выражения РАСМОТРЕТЬ ОБЯЗАТЕЛЬНО
 # #
 # st = "05-03-1987 # Дата рождения"
-# # print("Дата рождения:", re.sub(r'\s#.*', '', st).replace('-', '.'))
-# print("Дата рождения:", re.sub('-', '.', re.sub(r'#.*', '', st)))
+# print("Дата рождения:", re.sub('-', '.', re.sub(r'#.+', '', st)))
+# print("Дата рождения:", re.sub(r'\s#.*', '', st).replace('-', '.'))
 # print('Дата рождения:', re.sub(r'-', '.', re.search(r'\d{2}-\d{2}-\d{4}', st).group()))
 
 
@@ -291,9 +293,9 @@ import re
 # one
 # two
 # """
-# # print(re.findall(r'one.\w+', text))  # one\ntwo
-# # print(re.findall(r'one.\w+', text, re.DOTALL))  # one\ntwo
-#
+# print(re.findall(r'one.\w+', text))  # one\ntwo
+# print(re.findall(r'one.\w+', text, re.DOTALL))  # one\ntwo
+
 # print(re.findall(r'one$', text))
 # print(re.findall(r'one$', text, re.MULTILINE))
 
