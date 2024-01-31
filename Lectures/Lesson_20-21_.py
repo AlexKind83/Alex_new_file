@@ -1,13 +1,14 @@
 # Урок 20
-import re
+# import re
+
 
 # text = "<body>Пример жадного соответствия регулярных выражений</body>"
 # print(re.findall('<.*?>', text))
 
 
 # s = "<p>Изображение <img src='bg.jpg'> - фон страницы</p>"
-# # reg = r'<img.*?>'
-# reg = r'<img[^>]*>'
+# reg = r'<img.*?>'
+# # reg = r'<img[^>]*>'
 # print(re.findall(reg, s))
 
 
@@ -23,8 +24,12 @@ import re
 #         "программирования общего назначения с динамической строгой типизацией "
 #         "и автоматическим управлением памятью[18][19].")
 #
-# reg = r"\[\d+\]"
-# print(re.findall(reg, text))
+# my_reg_1 = r'\[.*?\]'
+# my_reg_2 = r'\[[^\]]*\]'  # вариант менее красив в данном случай
+# # reg = r"\[\d+\]"  # Самый красивый вариант
+# # print(re.findall(reg, text))
+# print(re.findall(my_reg_1, text))
+# print(re.findall(my_reg_2, text))
 
 
 # # (?:...) - это группирующая скобка является не сохраняющей ВНИМАНИЕ
@@ -38,12 +43,12 @@ import re
 
 # # (?:...){3} - повторяет что в круглых скобках
 # #
-# s = '127.168.255.255'
+# s = '127.168.257.255'
 # # reg = r'\d{1,3}\.\d{1,3}\.\d{1,3}\.'
 # reg = r'(?:\d{1,3}\.){3}\d{1,3}'
 #
 # print(re.findall(reg, s))
-# print(re.search(reg, s).group())
+# # print(re.search(reg, s).group())
 
 
 # # В re-функций split - (круглые скобки помогают включить эти символы в массив, и ИСКЛЮЧИТЬ пробельные символы!)
@@ -116,3 +121,190 @@ import re
 # print(re.sub(reg, r'http://\1', s, re.IGNORECASE))
 
 
+
+
+
+
+#  Урок 21
+
+#
+# Рекурсия
+
+# def elevator(n):
+#     if n == 0:
+#         print("Вы в подвале")
+#         return
+#     print("=>", n)
+#     elevator(n - 1)
+#     print(n, end=' ')
+#
+#
+# n1 = int(input("На каком Вы этаже: "))  # 5
+# elevator(n1)
+
+
+# # 2 Примера (1 - без рекурсий) (2 - с рекурсией)
+# #
+# def sum_list(lst):
+#     res = 0
+#     for i in lst:
+#         res += i
+#     return res
+#
+#
+# print(sum_list([1, 2, 3, 4, 5]))
+#
+# # Теперь пример Рекурсий
+#
+#
+# def sum_list(lst):
+#     if len(lst) == 1:
+#         return lst
+#     else:
+#         print(lst)
+#         return lst + sum_list(lst[1:])
+#
+#
+# print(sum_list([1, 2, 3, 4, 5]))
+
+
+# # Случай где базовым циклом нельзя выполнить (только рекурсией)
+# #
+# def to_str(n, base):
+#     convert = "0123456789ABCDEF"
+#     if n < base:
+#         # возвращаются данные из стека
+#         return convert[n]
+#     else:
+#         # в, вызываемой функций происходит вычисление, и приходят новые параметры в начало функций
+#         # из convert[по индексу] получаем данные которые сохраняются в стек
+#         return to_str(n // base, base) + convert[n % base]
+#
+#
+# print(to_str(365, 10))
+# print(to_str(18, 2))
+# print(to_str(18,8))
+# print(to_str(18, 16))
+
+
+# # Функция isinstance()
+# # проверяем является или нет Списком
+#
+# names = ['Adam', ['Bob', ['Chet', 'Cat'], 'Bard', 'Bert'], 'Alex', ['Bea', 'Bill'], 'Ann']
+# print(names)
+# print(len(names))
+# print(names[0])
+# print(isinstance(names[0], list))
+# print(names[1])
+# print(isinstance(names[1], list))
+# print(names[1][1][0])
+# print(isinstance(names[1][1][0], list))
+
+
+# # # Подсчитываем сколько элементов на всех уровнях вложенности
+# # #
+# names = ['Adam', ['Bob', ['Chet', 'Cat'], 'Bard', 'Bert'], 'Alex', ['Bea', 'Bill'], 'Ann']
+# print(names)
+#
+#
+# def count_item(lst):
+#     count = 0
+#     for item in lst:
+#         if isinstance(item, list):
+#             count += count_item(item)
+#         else:
+#             count += 1
+#     return count
+#
+#
+# print((count_item(names)))
+
+
+# # Убираем табуляцию и пробел из строки
+# #
+# def remove(text):
+#     if not text:
+#         return ""
+#     if text[0] == '\t' or text[0] == " ":
+#         return remove(text[1:])
+#     else:
+#         return text[0] + remove(text[1:])
+#
+#
+# print(remove(" Hello\tWorld "))
+
+
+# Файлы
+#
+
+# Текстовые
+# Бинарные
+
+# # Открываем файлы
+# #
+# f = open(r'test2.txt', 'r')  # Относительный путь
+# f2 = open(r'C:\Users\RobotComp.ru\Desktop\Новая папка\Python учеба\Lectures\test2.txt', 'r')  # Абсалютный путь
+# print(*f)  # Чтение содержимого файла
+# print(f)
+# print(f.closed)  # Проверка закрыт или не закрыт файл
+# f.close()
+# print(f.closed)  # Проверка закрыт или не закрыт файл
+# print(f.mode)
+# print(f.name)
+# print(f.encoding)
+
+
+#
+#
+# f = open(r'test2.txt', 'r')
+# print(f.read(3))  # Читает файл 3 символа
+# print(f.read())  # Дочитывает файл или читает его полностью
+# f.close()
+
+# f = open('test1.txt', 'r')
+# print(f.readline())  # считывает одну строку из файла
+# print(f.readline(8))
+# print(f.readline())
+# print(f.readline())
+# f.close()
+
+# f = open('test1.txt', 'r')
+# print(f.readlines(16))  # считал все данные из файла и вернул список из строк
+# print(f.readline())
+# f.close()
+
+# f = open('test1.txt', 'r')
+# for line in f:
+#     print(line)
+# f.close()
+
+
+# # Задача
+# #
+# f = open('test1.txt', 'r')
+# count = 0
+# for line in f:
+#     print(line)
+#     count += 1
+# f.close()
+# print('count =', count)
+#
+# f = open('test1.txt', 'r')
+# print(len(f.readline()))
+# f.close()
+
+
+# Создаем файл и записываем в его данные
+#
+# f = open("xyz.txt", 'w')
+# f.write("Hello\nWorld!\n")
+# f.close()
+
+# f = open("xyz.txt", 'a')
+# f.write("New text.\n")
+# f.close()
+
+# f = open("xyz.txt", 'w')
+# line = ["This is line 1\n", "This is line 2\n"]
+# f.writelines(line)
+# f.close()
