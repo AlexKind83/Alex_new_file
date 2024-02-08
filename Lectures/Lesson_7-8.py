@@ -42,10 +42,10 @@
 # #
 # a = [5, 4, 1, 2, 3]
 # print(a)
-#
 # sort = sorted(a)
 # print(sort)
-#
+# print(a)
+
 # sort = sorted(a, reverse=True)
 # print(sort)
 

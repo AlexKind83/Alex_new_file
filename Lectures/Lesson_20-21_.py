@@ -78,7 +78,7 @@
 # print(m[2])
 
 
-# #
+# #  ЗАПИСАТЬ
 # #
 # text = """
 # Самара
@@ -256,7 +256,7 @@
 
 #
 #
-# f = open(r'test2.txt', 'r')
+# f = open(r'test1.txt', 'r')
 # print(f.read(3))  # Читает файл 3 символа
 # print(f.read())  # Дочитывает файл или читает его полностью
 # f.close()
@@ -269,7 +269,7 @@
 # f.close()
 
 # f = open('test1.txt', 'r')
-# print(f.readlines(16))  # считал все данные из файла и вернул список из строк
+# print(f.readlines(15))  # считал все данные из файла и вернул список из строк
 # print(f.readline())
 # f.close()
 

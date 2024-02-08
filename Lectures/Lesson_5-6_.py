@@ -94,15 +94,15 @@
 # # [выражение for переменная in последовательность] -- генератор for
 # #
 # #
-a = [0 for _ in range(5)] # a = [0 for i in range(5)]
-print(a)
+# a = [0 for _ in range(5)] # a = [0 for i in range(5)]
+# print(a)
 # b = [i for i in range(5)]
 # print(b)
 
 
 # #
 # n = 5
-# b = [i ** 2 for i in range(1, n + 1)] # Если хотим чтобы цикл начинался не с )
+# b = [i ** 2 for i in range(1, n + 1)]  # Если хотим чтобы цикл длился (не включая 5, а до 5)
 # print(b)
 
 
@@ -232,7 +232,7 @@ print(a)
 # print(b)
 
 
-# # Задание, создать срезы изи списка
+# # Задание, создать срезы из списка
 # a = list(range(1, 8))
 # print(a)
 # print(a[::-1])
@@ -314,14 +314,14 @@ print(a)
 #             c.append(i)
 #             break  # для того чтобы одинаковые числа больше не проверялись 2 список
 # print(c)  # [2, 1, 4, 3]
-
+#
 # # 2 Вариант
 # a = [5, 9, 2, 1, 4, 3]
 # b = [4, 2, 1, 3, 7, 2, 4]
 # c = []
 #
 # for element in a:
-#     if element in c and element not in b:
+#     if element not in c and element in b:
 #         c.append(element)
 #
 # print(c)
