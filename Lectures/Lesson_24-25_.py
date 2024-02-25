@@ -38,7 +38,7 @@
 #     x = 1
 #     y = 1
 #
-#     def set_coord(self, x, y):  # self Ссылка на экземпляр класса
+#     def set_coord(self):  # self Ссылка на экземпляр класса
 #         print(self.__dict__)
 #
 #
@@ -46,14 +46,14 @@
 # p1.x = 5
 # p1.y = 24
 #
-# p1.set_coord(5, 24)  # Частый используемый метод написания
+# p1.set_coord()  # Частый используемый метод написания
 # # Point.set_coord(p1)  # Такой способ используется редко
 #
 # p2 = Point()
 # p2.x = 10
 # p2.y = 30
 #
-# p2.set_coord(10, 30)
+# p2.set_coord()
 # --------------------------------------------------------------------------
 
 
@@ -77,56 +77,57 @@
 
 # --------------------------------------------------------------------------------
 
-# Задача
+# # Задача
 #
-class Human:
-    name = 'name'
-    birthday = '00.00.0000'
-    phone = '00-00-00'
-    country = 'country'
-    citi = 'citi'
-    address = "street, house"
-
-    def print_info(self):
-        print(" Персональные данные  ".center(40, '*'))
-        print(f"Имя: {self.name}\nДата рождения: {self.birthday}\nНомер телефона: {self.phone}\n"
-              f"Страна: {self.country}\nГород: {self.citi}\nДомашний адрес: {self.address}")
-        print('=' * 40)
-
-    def input_info(self, first_name, birthday, phone, country, citi, address):
-        self.name = first_name
-        self.birthday = birthday
-        self.phone = phone
-        self.country = country
-        self.citi = citi
-        self.address = address
-
-    def set_address(self, address):  # устанавливаем адрес
-        self.address = address
-
-    def get_address(self):  # получаем адрес
-        return self.address
-
-    def set_name(self, name):  # устанавливаем имя
-        self.name = name
-
-    def get_name(self):  # получаем имя
-        return self.name
-
-
-h1 = Human()
-h1.print_info()
-h1.input_info('Юля', '23.05.1986', '45-46-98', 'Россия', 'Москва',
-              'Чистопрудный бульвар, 1А')
-h1.set_address("ул. Ленина, 56")
-h1.print_info()
-h1.set_name('Юлия')
-print(h1.get_address())
-print(h1.get_name())
-
-
-# Задача
+# class Human:
+#     name = 'name'
+#     birthday = '00.00.0000'
+#     phone = '00-00-00'
+#     country = 'country'
+#     citi = 'citi'
+#     address = "street, house"
 #
+#     def print_info(self):
+#         print(" Персональные данные  ".center(40, '*'))
+#         print(f"Имя: {self.name}\nДата рождения: {self.birthday}\nНомер телефона: {self.phone}\n"
+#               f"Страна: {self.country}\nГород: {self.citi}\nДомашний адрес: {self.address}")
+#         print('=' * 40)
+#
+#     def input_info(self, first_name, birthday, phone, country, citi, address):
+#         self.name = first_name
+#         self.birthday = birthday
+#         self.phone = phone
+#         self.country = country
+#         self.citi = citi
+#         self.address = address
+#
+#     def set_address(self, address):  # устанавливаем адрес
+#         self.address = address
+#
+#     def get_address(self):  # получаем адрес
+#         return self.address
+#
+#     def set_name(self, name):  # устанавливаем имя
+#         self.name = name
+#
+#     def get_name(self):  # получаем имя
+#         return self.name
+#
+#
+# h1 = Human()
+# h1.print_info()
+# h1.input_info('Юля', '23.05.1986', '45-46-98', 'Россия', 'Москва',
+#               'Чистопрудный бульвар, 1А')
+# h1.set_address("ул. Ленина, 56")
+# h1.print_info()
+# h1.set_name('Юлия')
+# print(h1.get_address())
+# print(h1.get_name())
+
+
+
+# # Задача
+# #
 # class Person:
 #     skill = 10  # статическое свойства
 #     name = ''
@@ -155,10 +156,10 @@ print(h1.get_name())
 
 # class Person:
 #     skill = 10  # статическое свойства
-#     # name = ''
-#     # surname = ''
+#     name = ''
+#     surname = ''
 #
-#     def __init__(self, name, surname):
+#    def __init__(self, name, surname):
 #         self.name = name  # динамические свойства
 #         self.surname = surname
 #         print("Инициализация класса", self)
@@ -185,8 +186,8 @@ print(h1.get_name())
 # p2.add_skill(2)
 
 
-# 3 добавляем (подсчитываем сколько экземпляров класса создано)
-
+# # 3 добавляем (подсчитываем сколько экземпляров класса создано)
+#
 # class Person:
 #     skill = 10  # статическое свойства
 #     count = 0
@@ -256,13 +257,3 @@ print(h1.get_name())
 # del droid2
 #
 # print("Численность роботов:", Robot.k)
-
-
-
-
-
-
-# Урок 25
-
-#
-#
