@@ -1,7 +1,7 @@
 import os
 
 text = "Постоянное время: О(1) \nЛинейное время: О(n) \nКвадратичное время: О(n**2) \nКубическое время: О(n**3) \n"
-my_file = r"..\Homework\Lesson 22.txt"
+my_file = r"..\Learned lesson 21 - 30\Task 22.txt"
 
 
 def replacing_lines(files, st):

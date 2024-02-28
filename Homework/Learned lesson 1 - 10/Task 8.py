@@ -1,4 +1,3 @@
-
 import math
 
 footing = int(input("Введите основание: "))

@@ -1,4 +1,3 @@
-
 import random
 
 random_numbers = list(range(10))

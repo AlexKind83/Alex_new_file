@@ -1,4 +1,3 @@
-
 print("Площадь окружности радиуса 2:", (lambda pi, radius: pi * (radius ** 2))(3.14, 2))
 print()
 print("Площадь прямоугольника 10*13:", (lambda x, y: x * y)(10, 13))

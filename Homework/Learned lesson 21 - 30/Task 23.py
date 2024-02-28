@@ -12,4 +12,4 @@ def scan_directory(root):
             print(f"{i} - dir")
 
 
-scan_directory(r"..\..\..\Abstract")
+scan_directory(r"..\..\..\..\Abstract")

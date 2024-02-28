@@ -1,4 +1,3 @@
-
 students_number = int(input('Количество студентов: '))
 students = []
 estimation = []
@@ -9,7 +8,6 @@ for i in range(students_number):
     e = int(input('Балл: '))
     students.append(s)
     estimation.append(e)
-
 estimation_sum = sum(estimation)
 estimation_average = round(estimation_sum / students_number)
 

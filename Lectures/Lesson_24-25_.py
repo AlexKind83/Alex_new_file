@@ -125,7 +125,6 @@
 # print(h1.get_name())
 
 
-
 # # Задача
 # #
 # class Person:

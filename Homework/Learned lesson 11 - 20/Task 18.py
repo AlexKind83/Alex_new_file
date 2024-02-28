@@ -1,4 +1,3 @@
-
 str_ = "I am learning Python. hello, WORLD!"
 
 str_index_1 = str_.index('h')

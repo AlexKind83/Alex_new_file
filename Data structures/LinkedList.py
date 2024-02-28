@@ -5,23 +5,26 @@
 # current - текущий (настоящий)
 # search - поиск
 
+# create - создать
 
+
+# get - получить
 # set - набор
 # coord - координировать
 # add - добавлять
 # to - к
+# change - менять
 
 class Node:
-    def __init__(self, data, new=None):
+    def __init__(self, data):
         self.data = data
-        self.new = new
+        self.new = None
 
 
 class LinkedList:
     def __init__(self):
         self.head = None
 
-        """     1    """
     def append(self, data):
         if not self.head:
             self.head = Node(data)
@@ -31,11 +34,11 @@ class LinkedList:
             current = current.new
         current.new = Node(data)
 
-    # def __str__(self):
-    #     node = self.head
-    #     while node is not None:
-    #         print(node.data)
-    #         node = node.new
+    def get_information(self):
+        node = self.head
+        while node is not None:
+            print(node.data)
+            node = node.new
 
     def search(self, target):
         current = self.head
@@ -50,13 +53,9 @@ class LinkedList:
 a_list = LinkedList()
 a_list.append('first_list')
 a_list.append('two_list')
-# a_list.append('three')
-print(a_list)
-
-
-# print(a_list.append('first_list'))
-# print(a_list.append('two_list'))
-
+a_list.append('three_list')
+a_list.get_information()
+print()
 
 print(a_list.search('first_list'))
 print(a_list.search('two_list'))

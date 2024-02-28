@@ -1,4 +1,3 @@
-
 client_date = {
     'name': 'Kelly',
     'age': 25,

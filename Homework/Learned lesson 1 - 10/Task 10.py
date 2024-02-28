@@ -1,4 +1,3 @@
-
 user_number = tuple(input("Введите любые числа, без пробелов: "))
 print(user_number)
 b = ()
