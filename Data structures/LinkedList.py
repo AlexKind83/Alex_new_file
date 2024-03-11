@@ -16,6 +16,7 @@
 # change - менять
 
 class Node:
+    """Создаем узел для связанного списка"""
     def __init__(self, data):
         self.data = data
         self.new = None

@@ -82,5 +82,55 @@
 #
 # end = time.time()
 # print(end - stat)
-
-
+import math
+# class Box:
+#     def __init__(self, cat = None):
+#         self.cat = cat
+#         self.nextcat = None
+#
+#
+# class LinkedList:
+#     def __init__(self):
+#         self.head = None
+#
+#     def contains(self, cat):
+#         """Проверяет есть или нет узлы в списке"""
+#         lastbox = self.head
+#         while (lastbox):
+#             if cat == lastbox.cat:
+#                 return True
+#             else:
+#                 lastbox = lastbox.nextcat
+#         return False
+#
+#     def addToEnd(self, newcat):
+#         """Добавить элементы в список. \n
+#            Добавляем узел в конец списка """
+#         newbox = Box(newcat)
+#         if self.head is None:
+#             self.head = newbox
+#             return
+#         lastbox = self.head
+#         while lastbox.nextcat:
+#             lastbox = lastbox.nextcat
+#         lastbox.nextcat = newbox
+#
+#     def get(self, catIndex):
+#         """"""
+#         lastbox = self.head
+#         boxIndex = 0
+#         while boxIndex <= catIndex:
+#             if boxIndex == catIndex:
+#                 return lastbox.cat
+#             boxIndex = boxIndex + 1
+#             lastbox = lastbox.nextcat
+#
+#
+# l1 = LinkedList()
+# l1.addToEnd('one')
+# l1.addToEnd('two')
+# l1.addToEnd('three')
+#
+# print(l1.contains('one'))
+#
+# print(l1.get(2))

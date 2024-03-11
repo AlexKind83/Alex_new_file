@@ -1,7 +1,7 @@
 class Person:
     def __init__(self, name, age):
-        self.__name = name
-        self.__age = age
+        self.name = name
+        self.age = age
 
     @property
     def name(self):
@@ -9,7 +9,10 @@ class Person:
 
     @name.setter
     def name(self, name):
-        self.__name = name
+        if isinstance(name, str):
+            self.__name = name
+        else:
+            raise ValueError("Ошибка")
 
     @name.deleter
     def name(self):
@@ -21,7 +24,10 @@ class Person:
 
     @age.setter
     def age(self, age):
-        self.__age = age
+        if age > 0:
+            self.__age = age
+        else:
+            raise ValueError("Некорректно")
 
     @age.deleter
     def age(self):
@@ -34,8 +40,7 @@ p1.name = 'Igor'
 p1.age = 31
 print(p1.name)
 print(p1.age)
-del p1.name
+# del p1.name
 print(p1.__dict__)
 del p1.age
 print(p1.__dict__)
-
