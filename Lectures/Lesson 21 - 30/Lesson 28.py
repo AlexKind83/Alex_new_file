@@ -137,36 +137,36 @@
 # outer()
 
 
-# #  Вложенный клас разбираемся
-# #
-# class MyOuter:
-#     age = 18
+#  Вложенный клас разбираемся
 #
-#     def __init__(self, name):
-#         self.name = name
-#
-#     @staticmethod
-#     def static_method():
-#         print("Статический метод")
-#
-#     def outer_method(self):
-#         print("Метод в наружном классе")
-#
-#     class MyInner:
-#         def __init__(self, inner_name, obj):
-#             self.inner_name = inner_name
-#             self.obj = obj
-#
-#         def inner_method(self):
-#             print("Вложенный класс", MyOuter.age, self.obj.name)
-#             MyOuter.static_method()
-#             self.obj.outer_method()
-#
-#
-# out = MyOuter('Внешний')
-# inner = out.MyInner('Внутренний', out)
-# print(inner.inner_name)
-# inner.inner_method()
+class MyOuter:
+    age = 18
+
+    def __init__(self, name):
+        self.name = name
+
+    @staticmethod
+    def static_method():
+        print("Статический метод")
+
+    def outer_method(self):
+        print("Метод в наружном классе")
+
+    class MyInner:
+        def __init__(self, inner_name, obj):
+            self.inner_name = inner_name
+            self.obj = obj
+
+        def inner_method(self):
+            print("Вложенный класс", MyOuter.age, self.obj.name)
+            MyOuter.static_method()
+            self.obj.outer_method()
+
+
+out = MyOuter('Внешний')
+inner = out.MyInner('Внутренний', out)
+print(inner.inner_name)
+inner.inner_method()
 
 
 # # Обращаемся к динамическим свойствам Родительского класса, вызывая метод Дочернего класса
@@ -266,7 +266,8 @@
 # d2.display()
 
 
-# Многоуровневые вложенные классы
+# """Многоуровневые вложенные классы"""
+#
 #
 # class Outer:
 #     def __init__(self):
@@ -302,56 +303,56 @@
 # # Создаем Многоуровневые вложенные классы, только обращаемся через имя класса
 # # и тогда не нужно будет создавать динамические свойства в Родительском классе
 # #
-# class Computer:
-#     def __init__(self):
-#         """Можно не создавать
-#            self.os = self.OS()
-#            self.cpu = self.CPU()"""
-#         self.name = 'PC001'
-#         # self.os = self.OS()
-#         # self.cpu = self.CPU()
-#
-#     class OS:
-#         def system(self):
-#             return 'Windows 10'
-#
-#     class CPU:
-#         def make(self):
-#             return 'Intel'
-#
-#         def model(self):
-#             return 'Core-i7'
-#
-#
-# comp = Computer()
-# # my_os = comp.os
-# # my_cpu = comp.cpu
-# my_os = Computer.OS()
-# my_cpu = Computer.CPU()
-#
-# print(comp.name)
-# print(my_os.system())
-# print(my_cpu.make())
-# print(my_cpu.model())
+class Computer:
+    def __init__(self):
+        """Можно не создавать
+           self.os = self.OS()
+           self.cpu = self.CPU()"""
+        self.name = 'PC001'
+        # self.os = self.OS()
+        # self.cpu = self.CPU()
+
+    class OS:
+        def system(self):
+            return 'Windows 10'
+
+    class CPU:
+        def make(self):
+            return 'Intel'
+
+        def model(self):
+            return 'Core-i7'
+
+
+comp = Computer()
+# my_os = comp.os
+# my_cpu = comp.cpu
+my_os = Computer.OS()
+my_cpu = Computer.CPU()
+
+print(comp.name)
+print(my_os.system())
+print(my_cpu.make())
+print(my_cpu.model())
 
 
 # """Магические методы"""
 
 #
 #
-class Cat:
-    def __init__(self, name):
-        self.name = name
-
-    def __repr__(self):
-        return f"{self.__class__}: {self.name}"
-
-    def __str__(self):
-        return f"{self.name}"
-
-
-cat = Cat('Пушок')
-print(cat)
-
-cat = [Cat('Пушок')]
-print(cat)
+# class Cat:
+#     def __init__(self, name):
+#         self.name = name
+#
+#     def __repr__(self):
+#         return f"{self.__class__}: {self.name}"
+#
+#     def __str__(self):
+#         return f"{self.name}"
+#
+#
+# cat = Cat('Пушок')
+# print(cat)
+#
+# cat = [Cat('Пушок')]
+# print(cat)
