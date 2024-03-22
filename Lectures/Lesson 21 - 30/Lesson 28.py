@@ -1,5 +1,9 @@
 """ Абстрактный метод при его вызове, требует создание реализаций абстрактного метода
     в Дочернем классе.
+    Абстрактный класс, и задача по абстрактному классу.
+    Маленький пример по созданию интерфейса -- интерфейсы состоят только из абстрактных методов.
+    Вложенные классы, многоуровневые классы.
+    Смотрим разницу между (def __str__) и (def __repr__).
     """
 # Урок 28
 
@@ -16,13 +20,13 @@
 #     def move(self):
 #         """Родительский абстрактный метод. \n
 #            Можно оставить его пустым pass"""
-#         print("Метод move() в базовом классе ")
+#         # print("Метод move() в базовом классе ")
 #
 #
 # class Queen(Chess):
 #     def move(self):
 #         """Реализован абстрактный метод в дочернем классе"""
-#         super().move()
+#         # super().move()
 #         print("Ферзь перемещен на e2e4")
 #
 #
@@ -58,9 +62,11 @@
 #     SUFFIX = 'USD'
 #
 #     def convert_to_rub(self):
+#         """Конвертируем доллары в рубли"""
 #         return self.value * Dollar.rate_to_rub
 #
 #     def print_value(self):
+#         """Выводим количество долларов и сколько это будет в рублях"""
 #         super().print_value()
 #         print(Dollar.SUFFIX, end=' ')
 #
@@ -70,9 +76,11 @@
 #     SUFFIX = 'EUR'
 #
 #     def convert_to_rub(self):
+#         """Конвертируем евро в рубли"""
 #         return self.value * Euro.rate_to_rub
 #
 #     def print_value(self):
+#         """Выводим количество евро и сколько это будет в рублях"""
 #         super().print_value()
 #         print(Euro.SUFFIX, end=' ')
 #
@@ -94,8 +102,8 @@
 #     elem.show()
 
 
-# # """Интерфейсы"""
-# # """Интерфейсы состоят только из абстрактных методов"""
+# # # """Интерфейсы"""
+# # # """Интерфейсы состоят только из абстрактных методов"""
 # from abc import ABC, abstractmethod
 #
 #
@@ -137,36 +145,36 @@
 # outer()
 
 
-#  Вложенный клас разбираемся
+# #  Вложенный клас разбираемся
+# #
+# class MyOuter:
+#     age = 18
 #
-class MyOuter:
-    age = 18
-
-    def __init__(self, name):
-        self.name = name
-
-    @staticmethod
-    def static_method():
-        print("Статический метод")
-
-    def outer_method(self):
-        print("Метод в наружном классе")
-
-    class MyInner:
-        def __init__(self, inner_name, obj):
-            self.inner_name = inner_name
-            self.obj = obj
-
-        def inner_method(self):
-            print("Вложенный класс", MyOuter.age, self.obj.name)
-            MyOuter.static_method()
-            self.obj.outer_method()
-
-
-out = MyOuter('Внешний')
-inner = out.MyInner('Внутренний', out)
-print(inner.inner_name)
-inner.inner_method()
+#     def __init__(self, name):
+#         self.name = name
+#
+#     @staticmethod
+#     def static_method():
+#         print("Статический метод")
+#
+#     def outer_method(self):
+#         print("Метод в наружном классе")
+#
+#     class MyInner:
+#         def __init__(self, inner_name, obj):
+#             self.inner_name = inner_name
+#             self.obj = obj
+#
+#         def inner_method(self):
+#             print("Вложенный класс", MyOuter.age, self.obj.name)
+#             MyOuter.static_method()
+#             self.obj.outer_method()
+#
+#
+# out = MyOuter('Внешний')
+# inner = out.MyInner('Внутренний', out)
+# print(inner.inner_name)
+# inner.inner_method()
 
 
 # # Обращаемся к динамическим свойствам Родительского класса, вызывая метод Дочернего класса
@@ -266,9 +274,9 @@ inner.inner_method()
 # d2.display()
 
 
-# """Многоуровневые вложенные классы"""
-#
-#
+# # """Многоуровневые вложенные классы"""
+# #
+# #
 # class Outer:
 #     def __init__(self):
 #         self.inner = self.Inner()
@@ -278,7 +286,7 @@ inner.inner_method()
 #
 #     class Inner:
 #         def __init__(self):
-#             self.inner_inner = self.InnerClass()
+#             self.inner_class = self.InnerClass()
 #
 #         def show(self):
 #             print("Inner")
@@ -296,44 +304,44 @@ inner.inner_method()
 # inner1.show()
 #
 # # inner2 = inner1.inner_inner
-# inner2 = outer.inner.inner_inner
+# inner2 = outer.inner.inner_class
 # inner2.show()
 
 
-# # Создаем Многоуровневые вложенные классы, только обращаемся через имя класса
+# # Создаем вложенные классы, только обращаемся через имя класса
 # # и тогда не нужно будет создавать динамические свойства в Родительском классе
 # #
-class Computer:
-    def __init__(self):
-        """Можно не создавать
-           self.os = self.OS()
-           self.cpu = self.CPU()"""
-        self.name = 'PC001'
-        # self.os = self.OS()
-        # self.cpu = self.CPU()
-
-    class OS:
-        def system(self):
-            return 'Windows 10'
-
-    class CPU:
-        def make(self):
-            return 'Intel'
-
-        def model(self):
-            return 'Core-i7'
-
-
-comp = Computer()
-# my_os = comp.os
-# my_cpu = comp.cpu
-my_os = Computer.OS()
-my_cpu = Computer.CPU()
-
-print(comp.name)
-print(my_os.system())
-print(my_cpu.make())
-print(my_cpu.model())
+# class Computer:
+#     def __init__(self):
+#         """Можно не создавать
+#            self.os = self.OS()
+#            self.cpu = self.CPU()"""
+#         self.name = 'PC001'
+#         # self.os = self.OS()
+#         # self.cpu = self.CPU()
+#
+#     class OS:
+#         def system(self):
+#             return 'Windows 10'
+#
+#     class CPU:
+#         def make(self):
+#             return 'Intel'
+#
+#         def model(self):
+#             return 'Core-i7'
+#
+#
+# comp = Computer()
+# # my_os = comp.os
+# # my_cpu = comp.cpu
+# my_os = Computer.OS()
+# my_cpu = Computer.CPU()
+#
+# print(comp.name)
+# print(my_os.system())
+# print(my_cpu.make())
+# print(my_cpu.model())
 
 
 # """Магические методы"""
