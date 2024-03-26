@@ -269,22 +269,22 @@
 
 
 # #
-# import math
+# import geometry
 #
-# num1 = math.sqrt(4) # Квадратный корень
-# num2 = math.ceil(3.1) # Округляет до ближайшего целого числа
-# num3 = math.floor(3.8) #
+# num1 = geometry.sqrt(4) # Квадратный корень
+# num2 = geometry.ceil(3.1) # Округляет до ближайшего целого числа
+# num3 = geometry.floor(3.8) #
 #
 # print(num1)
 # print(num2)
 # print(num3)
-# print(math.pi)
+# print(geometry.pi)
 
 
 # # ЗАПОМНИТЬ
 # # Даем псевдоним import Math # Квадратный корень
-# import math as m # Даем псевдоним math
-# from math import sqrt, ceil # Тут sqrt можно обращаться без math и ceil
+# import geometry as m # Даем псевдоним geometry
+# from geometry import sqrt, ceil # Тут sqrt можно обращаться без geometry и ceil
 #
 # num1 = m.sqrt(4)
 # num2 = ceil(3.1)

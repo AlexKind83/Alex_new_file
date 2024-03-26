@@ -452,7 +452,7 @@
 
 # # Документация должна быть ТОЛЬКО первой строкой
 # #
-# from math import pi
+# from geometry import pi
 #
 #
 # def cylinder(r, h):

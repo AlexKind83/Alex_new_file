@@ -19,7 +19,7 @@
 
 #
 #
-# import math
+# import geometry
 
 
 # class Point:
@@ -28,7 +28,7 @@
 #     def __init__(self, x, y):
 #         self.x = x
 #         self.y = y
-#         self.length = math.sqrt(x * x + y * y)
+#         self.length = geometry.sqrt(x * x + y * y)
 #
 #     @property
 #     def length(self):

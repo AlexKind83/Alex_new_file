@@ -1,3 +1,4 @@
+"""@property используется для проверки, что приходит в экземпляр класса"""
 class Point3D:
     def __init__(self, x, y, z):
         self.x = x
@@ -12,7 +13,7 @@ class Point3D:
         """Исключение для Перегрузки операторов. \n
            Служит для проверки операндов, что он является типом класса Clock."""
         if not isinstance(other, Point3D):
-            raise ArithmeticError("Правый операнд должен быть типом класса Clock")
+            raise ValueError("Правый операнд должен быть типом класса Clock")
 
     def __add__(self, other):
         self.check(other)
@@ -20,6 +21,7 @@ class Point3D:
         y = self.y + other.y
         z = self.z + other.z
         return Point3D(x, y, z)
+        # return Point3D(self.x + other.x, self.y + other.y, self.z + other.z)  # или так
 
     def __sub__(self, other):
         self.check(other)
@@ -43,11 +45,14 @@ class Point3D:
         return Point3D(x, y, z)
 
     def __eq__(self, other):
+        """Выводит каждому значению False, то что закомментировано. \n
+           Выводит общий False."""
         self.check(other)
-        x = self.x == other.x
-        y = self.y == other.y
-        z = self.z == other.z
-        return Point3D(x, y, z)
+        # x = self.x == other.x
+        # y = self.y == other.y
+        # z = self.z == other.z
+        return self.x == other.x and self.y == other.y and self.z == other.z
+        # return Point3D(x, y, z)  # Лучше не применять имя класса
 
     def __getitem__(self, item):
         key = {'x': self.x,
