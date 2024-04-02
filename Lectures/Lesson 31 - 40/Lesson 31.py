@@ -1,5 +1,10 @@
 """Метод __call__(self, *args, **kwargs) делает перегрузку круглых скобок
-   Метод __call__ рассчитан для создание декораторов класса"""
+   Метод __call__ рассчитан для, создание декораторов класса.
+   Класс декоратор, с параметрами функций, с параметрами в самом декораторе.
+   Декорирование метода, класса.
+   Создание метакласса.
+   Дескрипторы - они создаются чтобы, заменить методы @property
+   Метод @property создается для того чтобы Атрибутам дать проверку."""
 # Урок 31
 
 """Функторы"""
@@ -28,8 +33,8 @@
 
 
 """Подходим потихоньку к классу декоратору"""
-# # 2 2 примера (1 класс) (2 функция, с замыканием)
-# #
+# 2 2 примера (1 класс) (2 функция, с замыканием)
+#
 # class StripChars:
 #     def __init__(self, chars):
 #         self.__chars = chars
@@ -171,18 +176,18 @@
 
 # class MyDecorator:
 #     def __init__(self, func):
-#         self.name = func
+#         self.func = func
 #
 #     def __call__(self, *args):  # если не хотим привязываться к количеству аргументов
 #         return f"Перед вызовом функций\n{self.func(*args)}\nПосле вызова функций"
 #
 #
-# @MyDecorator(" два параметра")
+# @MyDecorator
 # def function(a, b):
 #     return a * b
 #
 #
-# @MyDecorator( "три параметра")
+# @MyDecorator
 # def function1(a, b, c):
 #     return a * b * c
 #
@@ -191,30 +196,30 @@
 # print(function1(2, 5, 2))
 
 # --------------------------------------------------------------------------------------
-# (добавляем параметры декоратора)
-
+# # (добавляем параметры декоратора)
+#
 # class MyDecorator:
 #     def __init__(self, arg):
 #         self.name = arg
 #
 #     def __call__(self, func):
 #         def wrap(*args, **kwargs):
-#             return f"Перед вызовом функций ({self.name})\n{func(*args, **kwargs)}\nПосле вызова функций"
+#             return f"Перед вызовом функций ({self.name})\n{func(*args, **kwargs)}"
 #
 #         return wrap
 #
 #
-# @MyDecorator(" два параметра")
+# @MyDecorator("два параметра")
 # def function(a, b):
 #     return a * b
 #
 #
-# @MyDecorator( "три параметра")
+# @MyDecorator("три параметра")
 # def function(a, b, c):
 #     return a * b * c
 #
 #
-# print(function(2, 5))
+# # print(function(2, 5))
 # print(function(2, 5, 2))
 
 
@@ -239,9 +244,9 @@
 # print(function(2, 5))
 
 
-# """Декорирование метода"""
-#
-#
+"""Декорирование метода"""
+
+
 # def dec(fn):
 #     def wrap(*args, **kwargs):
 #         print('-' * 20)
@@ -265,9 +270,9 @@
 # p1.info()
 
 
-# """Декорация класса"""
-#
-#
+"""Декорация класса"""
+
+
 # def decorator(cls):
 #     class Wrapper(cls):
 #         def doubler(self, value):
@@ -380,8 +385,8 @@
 
 """Дескриптор методы: (__get__, __set__, __delete__, __set_name__)"""
 """Стандартный синтаксис записи"""
-
-
+#
+#
 class ValidString:  # Дескриптор
     def __set_name__(self, owner, name):  # 2 аргумента обязательно, но не обязательно его выводить
         print(owner)  # Не обязательный
@@ -394,6 +399,9 @@ class ValidString:  # Дескриптор
         if not isinstance(value, str):
             raise ValueError(f"{self.__name} должно быть строкой")
         instance.__dict__[self.__name] = value
+
+    def __delete__(self, instance):
+        del instance.__dict__[self.__name]
 
 
 class Person:
@@ -410,4 +418,5 @@ p = Person('Ivan', 'Petrov')
 print(p.name)
 print(p.surname)
 print(p.__dict__)
-
+del p.name
+print(p.__dict__)

@@ -1,48 +1,49 @@
-""""""
+"""Второй способ применения Дескриптора (не безопасный способ), здесь надо изменить имя
+   чтобы он работал"""
 # Урок 32
 
-# """Дескрипторы продолжаем"""
+"""Дескрипторы продолжаем"""
 
 
 # Добавляем отдельную проверку, и применяем его в __set__
 # (3) Изменяем применения Дескриптора только нужно изменить имя(обязательно)
 # Второй вариант Дескриптора
-#
-# class Integer:
-#
-#     @staticmethod
-#     def verify_coord(coord):
-#         if not isinstance(coord, int):
-#             raise TypeError(f"Координата {coord}  должна быть целым числом")
-#
-#     def __set_name__(self, owner, name):
-#         self.__name = "_" + name  # (3) Тут мы при выводе имени добавили подчеркивание
-#
-#     def __get__(self, instance, owner):
-#         # return instance.__dict__[self.__name]
-#         return getattr(instance, self.__name)  # (3) (1) это получить у экземпляра значение
-#
-#     def __set__(self, instance, value):
-#         self.verify_coord(value)
-#         # instance.__dict__[self.__name] = value
-#         setattr(instance, self.__name, value)  # (3) (2) instance = экземпляр класса, имя, значение
-#
-#
-# class Point3D:
-#     x = Integer()
-#     y = Integer()
-#     z = Integer()
-#
-#     def __init__(self, x, y, z):
-#         self.x = x
-#         self.y = y
-#         self.z = z
-#
-#
-# p1 = Point3D(1, 2, 3)
-# p1.x = 20  # (2)
-# print(p1.x)  # (1)
-# print(p1.__dict__)
+
+class Integer:
+
+    @staticmethod
+    def verify_coord(coord):
+        if not isinstance(coord, int):
+            raise TypeError(f"Координата {coord}  должна быть целым числом")
+
+    def __set_name__(self, owner, name):
+        self.__name = "_" + name  # (3) Тут мы при выводе имени добавили подчеркивание
+
+    def __get__(self, instance, owner):
+        # return instance.__dict__[self.__name]
+        return getattr(instance, self.__name)  # (3) (1) это получить у экземпляра значение
+
+    def __set__(self, instance, value):
+        self.verify_coord(value)
+        # instance.__dict__[self.__name] = value
+        setattr(instance, self.__name, value)  # (3) (2) instance = экземпляр класса, имя, значение
+
+
+class Point3D:
+    x = Integer()
+    y = Integer()
+    z = Integer()
+
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
+
+
+p1 = Point3D(1, 2, 3)
+p1.x = 20  # (2)
+print(p1.x)  # (1)
+print(p1.__dict__)
 
 
 # """Метаклассы"""
@@ -124,62 +125,62 @@
 # ---------------------------------------------------------------------------
 
 
-# Задача
+# # Задача
+# #
+# class PayrollSystem:
+#     def calculate(self, employees):
+#         print("Расчет заработной платы:")
+#         print('=' * 50)
+#         for employee in employees:
+#             print(f"Заработная плата: {employee.id_name} - {employee.name}")
+#             print(f"- Проверить сумму: {employee.calculate_payroll()}")
+#             print()
 #
-class PayrollSystem:
-    def calculate(self, employees):
-        print("Расчет заработной платы:")
-        print('=' * 50)
-        for employee in employees:
-            print(f"Заработная плата: {employee.id_name} - {employee.name}")
-            print(f"- Проверить сумму: {employee.calculate_payroll()}")
-            print()
-
-
-class Employee:
-    def __init__(self, id_name, name):
-        self.id_name = id_name
-        self.name = name
-
-
-class SalaryEmployee(Employee):
-    """Административные работники, с фиксированной зарплатой"""
-    def __init__(self, id_name, name, weekly_salary):
-        super().__init__(id_name, name)
-        self.weekly_salary = weekly_salary
-
-    def calculate_payroll(self):
-        return self.weekly_salary
-
-
-class HourlyEmployee(Employee):
-    """Сотрудники с почасовой зарплатой"""
-    def __init__(self, id_name, name, hours_worked, hour_rate):
-        super().__init__(id_name, name)
-        self.hours_worked = hours_worked
-        self.hour_rate = hour_rate
-
-    def calculate_payroll(self):
-        return self.hours_worked * self.hour_rate
-
-
-class SalesRepresentative(SalaryEmployee):
-    def __init__(self, id_name, name, weekly_salary, commission_salary):
-        super().__init__(id_name, name, weekly_salary)
-        self.commission_salary = commission_salary
-
-    def calculate_payroll(self):
-        return self.weekly_salary + self.commission_salary
-
-
-salary_employee = SalaryEmployee(1, "Валерий Задорожный", 1500)
-hourly_employee = HourlyEmployee(2, "Илья Кромин", 40, 15)
-sales_representative = SalesRepresentative(3, "Николай Хорольский", 1000,
-                                           250)
-
-payroll_system = PayrollSystem()
-payroll_system.calculate([
-    salary_employee,
-    hourly_employee,
-    sales_representative
-])
+#
+# class Employee:
+#     def __init__(self, id_name, name):
+#         self.id_name = id_name
+#         self.name = name
+#
+#
+# class SalaryEmployee(Employee):
+#     """Административные работники, с фиксированной зарплатой"""
+#     def __init__(self, id_name, name, weekly_salary):
+#         super().__init__(id_name, name)
+#         self.weekly_salary = weekly_salary
+#
+#     def calculate_payroll(self):
+#         return self.weekly_salary
+#
+#
+# class HourlyEmployee(Employee):
+#     """Сотрудники с почасовой зарплатой"""
+#     def __init__(self, id_name, name, hours_worked, hour_rate):
+#         super().__init__(id_name, name)
+#         self.hours_worked = hours_worked
+#         self.hour_rate = hour_rate
+#
+#     def calculate_payroll(self):
+#         return self.hours_worked * self.hour_rate
+#
+#
+# class SalesRepresentative(SalaryEmployee):
+#     def __init__(self, id_name, name, weekly_salary, commission_salary):
+#         super().__init__(id_name, name, weekly_salary)
+#         self.commission_salary = commission_salary
+#
+#     def calculate_payroll(self):
+#         return self.weekly_salary + self.commission_salary
+#
+#
+# salary_employee = SalaryEmployee(1, "Валерий Задорожный", 1500)
+# hourly_employee = HourlyEmployee(2, "Илья Кромин", 40, 15)
+# sales_representative = SalesRepresentative(3, "Николай Хорольский", 1000,
+#                                            250)
+#
+# payroll_system = PayrollSystem()
+# payroll_system.calculate([
+#     salary_employee,
+#     hourly_employee,
+#     sales_representative
+# ])
