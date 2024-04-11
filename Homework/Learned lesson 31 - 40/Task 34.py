@@ -90,6 +90,26 @@ class Group:
         with open(self.get_file_name(), 'r', encoding="UTF-8") as f:
             print(json.load(f))
 
+    @staticmethod
+    def dump_groups(file, group):
+        try:
+            data = json.load(open(file))
+        except FileNotFoundError:
+            data = {}
+
+        with open(file, 'w', encoding='UTF-8') as f:
+            stud_list = {}
+            for i in group.students:
+                stud_list[i.name] = i.marks
+
+        data[group.group] = stud_list
+        json.dump(data, f, indent=2)
+
+    @staticmethod
+    def load_groups(file):
+        with open(file, 'r', encoding='UTF-8') as f:
+            print(json.load(f))
+
 
 st1 = Student('Bodnya', [5, 4, 3, 4, 5, 3])
 st2 = Student('Nikolaenko', [2, 3, 5, 4, 2])
@@ -108,3 +128,7 @@ group2.dump_to_json()
 group3.dump_to_json()
 
 group1.load_from_file()
+
+# Group.dump_groups('groups.json', group1)
+# Group.dump_groups('groups.json', group2)
+# Group.load_groups('groups.json')
