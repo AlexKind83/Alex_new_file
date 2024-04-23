@@ -226,10 +226,10 @@ row = soup.find('div', class_='name')  # .text (покажет что в тег�
 
 # #
 # # И это под запись (а то в будущем сложно будет востановить событие исполняемости)
-# import requests
-# from bs4 import BeautifulSoup
-#
-#
+import requests
+from bs4 import BeautifulSoup
+
+
 def get_html(url):
     r = requests.get(url)
     return r.text

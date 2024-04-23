@@ -27,7 +27,7 @@ def get_data_2(html):
     soup = BeautifulSoup(html, 'html.parser')
     datas = soup.find('div', class_="table-of-contents__header").find_next_sibling()
     lst = [data.text for data in datas]
-    return '\n'.join(lst)
+    return '\n'.join(lst)  # Распаковываем список
 
 
 def main():
