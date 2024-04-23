@@ -17,13 +17,13 @@ import sqlite3
 # cur.execute("""""")
 # con.close()
 
-# with sqlite3.connect('profile.db') as con:
-#     cur = con.cursor()  # Важная часть это курсор и его перемещение
+with sqlite3.connect('profile.db') as con:
+    cur = con.cursor()
     # cur.execute("""CREATE TABLE IF NOT EXISTS users(
     # id INTEGER PRIMARY KEY AUTOINCREMENT,
     # name TEXT NOT NULL,
     # summa REAL,
     # date TEXT
-    # )""")  # Выполнить запрос
-    # cur.execute('DROP TABLE users')
+    # )""")
+    cur.execute('DROP TABLE users')
 
