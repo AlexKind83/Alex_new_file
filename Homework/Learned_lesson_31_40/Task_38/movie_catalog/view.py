@@ -1,4 +1,4 @@
-from Homework.Task_38.movie_catalog.decorator import add_title
+from Homework.Learned_lesson_31_40.Task_38.movie_catalog.decorator import add_title
 
 
 class UserInterface:

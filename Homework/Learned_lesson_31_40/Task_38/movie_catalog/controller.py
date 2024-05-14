@@ -1,6 +1,6 @@
 """Импортируем модули и классы, (model и view)"""
-from Homework.Task_38.movie_catalog.view import UserInterface
-from Homework.Task_38.movie_catalog.model import MovieCatalogModel
+from Homework.Learned_lesson_31_40.Task_38.movie_catalog.view import UserInterface
+from Homework.Learned_lesson_31_40.Task_38.movie_catalog.model import MovieCatalogModel
 
 
 class Controller:
