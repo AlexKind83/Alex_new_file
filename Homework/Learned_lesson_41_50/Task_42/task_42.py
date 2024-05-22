@@ -1,6 +1,7 @@
 import sqlite3
 
 with sqlite3.connect('homework_42.db') as con:
+
     cur = con.cursor()
     cur.execute("""
     CREATE TABLE IF NOT EXISTS student(
