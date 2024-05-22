@@ -8,7 +8,7 @@
 
 # Как работает в чистом виде Jinja
 
-# from jinja2 import Template
+from jinja2 import Template
 
 
 # name = 'Игорь'
@@ -140,19 +140,19 @@
 
 # macro определение = [это как функция]
 
-# html = """
-# {% macro func_input(name, value="", type="text", size=20) %}
-#     <input type="{{ type }}" name="{{ name }}" value="{{ value }}" size="{{ size }}">
-# {% endmacro %}
-#
-# <p>{{ func_input('username') }}</p>
-# <p>{{ func_input('email') }}</p>
-# <p>{{ func_input('password', type="password") }}</p>
-# """
-#
-# tm = Template(html)
-# msg = tm.render()
-# print(msg)
+html = """
+{% macro func_input(name, value="", type="text", size=20) %}
+    <input type="{{ type }}" name="{{ name }}" value="{{ value }}" size="{{ size }}">
+{% endmacro %}
+
+<p>{{ func_input('username') }}</p>
+<p>{{ func_input('email') }}</p>
+<p>{{ func_input('password', type="password") }}</p>
+"""
+
+tm = Template(html)
+msg = tm.render()
+print(msg)
 
 # =========================================================================
 
@@ -179,14 +179,14 @@
 
 # Разбиваем на модули about page
 
-from jinja2 import Environment, FileSystemLoader
-
-subs = ['Культура', 'Наука', 'Политика', 'Спорт']
-
-file_loader = FileSystemLoader('templates')
-env = Environment(loader=file_loader)
-
-tm = env.get_template('about.html')
-msg = tm.render(list_table=subs)
-
-print(msg)
+# from jinja2 import Environment, FileSystemLoader
+#
+# subs = ['Культура', 'Наука', 'Политика', 'Спорт']
+#
+# file_loader = FileSystemLoader('templates')
+# env = Environment(loader=file_loader)
+#
+# tm = env.get_template('about.html')
+# msg = tm.render(list_table=subs)
+#
+# print(msg)
