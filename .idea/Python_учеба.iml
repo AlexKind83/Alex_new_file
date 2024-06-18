@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Homework/my_portfolio" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Homework/my_project1" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Lectures/Lesson_48_django/password_generator_project" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Lectures/Lesson_50_django/third/todos" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
     <orderEntry type="inheritedJdk" />

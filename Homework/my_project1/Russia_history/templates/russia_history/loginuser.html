@@ -1,0 +1,17 @@
+{% extends 'russia_history/base.html' %}
+
+{% block content %}
+
+<h1>Авторизация:</h1>
+<h2>{{ error }}</h2>
+
+<form method="post" class="bg">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="center">
+        <button>Авторизация</button>
+    </div>
+</form>
+
+
+{% endblock %}

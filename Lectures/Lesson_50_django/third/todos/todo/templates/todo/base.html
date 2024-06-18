@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="{% static 'css/style_h_p1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_3.css' %}">
 </head>
 <body>
 
@@ -15,6 +15,8 @@
         <ul>
         {% if user.is_authenticated %}
             <li class="logo">Пользователь: {{ user.username }}</li>
+            <li><a href="{% url 'createtodo' %}">Создать</a></li>
+            <li><a href="{% url 'currenttodos' %}">Актуальные</a></li>
             <li>
                 <form action="{% url 'logoutuser' %}" method="post">
                     {% csrf_token %}
@@ -31,10 +33,8 @@
 
 <div class="content">
     <div class="wrap">
-
         {% block content %}
         {% endblock %}
-
     </div>
 </div>
 
